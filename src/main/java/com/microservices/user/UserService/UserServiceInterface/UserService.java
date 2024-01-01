@@ -1,9 +1,13 @@
 package com.microservices.user.UserService.UserServiceInterface;
 
-public class UserService {
+import com.microservices.user.UserBean.UserBean;
 
-	public UserService() {
-		// TODO Auto-generated constructor stub
-	}
+import java.util.List;
+
+public interface UserService {
+
+	UserBean createUser(UserBean bean);
+	UserBean getSingleUser(String userid);
+	List<UserBean> getAllIUsers();
 
 }

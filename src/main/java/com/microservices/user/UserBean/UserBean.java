@@ -1,13 +1,9 @@
-package com.microservices.user.UserEntity;
+package com.microservices.user.UserBean;
 
-import org.hibernate.annotations.UuidGenerator;
 
-import jakarta.persistence.Entity;
 
-@Entity
-public class UserEntity {
-
-	@UuidGenerator
+public class UserBean {
+	
 	private String userId;
 	private String userName;
 	private String emaail;

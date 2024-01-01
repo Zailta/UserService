@@ -1,9 +1,10 @@
 package com.microservices.user.UserRepository;
 
-public class UserRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-	public UserRepository() {
-		// TODO Auto-generated constructor stub
-	}
+import com.microservices.user.UserEntity.UserEntity;
 
+public interface UserRepository extends JpaRepository<UserEntity, String>{
+
+	
 }
