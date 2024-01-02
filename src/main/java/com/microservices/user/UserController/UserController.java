@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.microservices.user.UserBean.UserBean;
+import com.microservices.user.UserEntity.*;
 import com.microservices.user.UserService.UserServiceInterface.UserService;
 
 @RestController
@@ -23,21 +23,21 @@ public class UserController {
 	//create user
 	
 	@PostMapping(value = "/create")
-	public ResponseEntity<UserBean> createUser( @RequestBody UserBean bean){
-		UserBean creatdUser = service.createUser(bean);
+	public ResponseEntity<UserEntity> createUser( @RequestBody UserEntity bean){
+		UserEntity creatdUser = service.createUser(bean);
 		return ResponseEntity.ok(creatdUser);
 	}
 	//findSingle User
 	@GetMapping(value = "/{userId}")
-	public ResponseEntity<UserBean> findUser( @PathVariable String userId){
-		UserBean singleUser = service.getSingleUser(userId);
+	public ResponseEntity<UserEntity> findUser( @PathVariable String userId){
+		UserEntity singleUser = service.getSingleUser(userId);
 		return ResponseEntity.ok(singleUser);
 	}
 	
 	//FindAllusers
 	@GetMapping(value = "/")
-	public ResponseEntity<List<UserBean>> findAll(){
-		List<UserBean> allIUsers = service.getAllIUsers();
+	public ResponseEntity<List<UserEntity>> findAll(){
+		List<UserEntity> allIUsers = service.getAllIUsers();
 		return ResponseEntity.ok(allIUsers);
 	}
 }

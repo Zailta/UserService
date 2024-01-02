@@ -14,6 +14,7 @@ public class UserEntity {
 	private String about;
 	private String firstName;
 	private String lastName;
+	
 	public String getUserId() {
 		return userId;
 	}
