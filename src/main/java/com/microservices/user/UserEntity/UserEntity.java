@@ -4,24 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.UuidGenerator;
-import org.springframework.data.annotation.Transient;
 
 import com.microservices.user.Userutility.UserRatings;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 
 @Entity
 public class UserEntity {
-
+	@Id
 	@UuidGenerator
 	private String userId;
 	private String userName;
-	private String emaail;
+	private String email;
 	private String about;
 	private String firstName;
 	private String lastName;
 	@Transient
-	List <UserRatings> ratings = new ArrayList();
+	List <UserRatings> ratings = new ArrayList<UserRatings> ();
 	public String getUserId() {
 		return userId;
 	}
@@ -35,10 +36,10 @@ public class UserEntity {
 		this.userName = userName;
 	}
 	public String getEmaail() {
-		return emaail;
+		return email;
 	}
 	public void setEmaail(String emaail) {
-		this.emaail = emaail;
+		this.email = emaail;
 	}
 	public String getAbout() {
 		return about;

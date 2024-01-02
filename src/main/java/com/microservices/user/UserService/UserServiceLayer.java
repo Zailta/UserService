@@ -17,12 +17,10 @@ import com.microservices.user.UserService.UserServiceInterface.UserService;
 public class UserServiceLayer implements UserService{
 	@Autowired
 	UserRepository repository;
-	@Autowired
-	ModelMapper mapper;
 
 	@Override
 	public UserEntity createUser(UserEntity bean) {
-		UserEntity savedUser = repository.save(mapper.map(bean, UserEntity.class));
+		UserEntity savedUser = repository.save(bean);
 		return savedUser;
 	}
 
