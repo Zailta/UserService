@@ -1,6 +1,12 @@
 package com.microservices.user.UserEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.annotations.UuidGenerator;
+import org.springframework.data.annotation.Transient;
+
+import com.microservices.user.Userutility.UserRatings;
 
 import jakarta.persistence.Entity;
 
@@ -14,7 +20,8 @@ public class UserEntity {
 	private String about;
 	private String firstName;
 	private String lastName;
-	
+	@Transient
+	List <UserRatings> ratings = new ArrayList();
 	public String getUserId() {
 		return userId;
 	}
