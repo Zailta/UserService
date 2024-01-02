@@ -34,8 +34,7 @@ public class UserServiceLayer implements UserService{
 
 	@Override
 	public List<UserEntity> getAllIUsers() {
-		List<UserEntity> findAll = repository.findAll();
-		List<UserEntity> allUsers = findAll.stream().map(user ->user).collect(Collectors.toList());
+		List<UserEntity> allUsers = repository.findAll();
 		return allUsers;
 	}
 
