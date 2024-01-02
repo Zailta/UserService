@@ -35,10 +35,10 @@ public class UserEntity {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getEmaail() {
+	public String getEmail() {
 		return email;
 	}
-	public void setEmaail(String emaail) {
+	public void setEmail(String emaail) {
 		this.email = emaail;
 	}
 	public String getAbout() {
