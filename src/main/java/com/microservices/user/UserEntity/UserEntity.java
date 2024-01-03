@@ -59,6 +59,14 @@ public class UserEntity {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public List<UserRatings> getRatings() {
+		return ratings;
+	}
+	public void setRatings(List<UserRatings> ratings) {
+		this.ratings = ratings;
+	}
+	
+	
 	
 	
 
