@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.microservices.user.Exception.CustomExceptions.EXNResourceNotFoundException;
+import com.microservices.user.ExternalService.HotelService.HotelService;
 import com.microservices.user.UserEntity.UserEntity;
 import com.microservices.user.UserRepository.UserRepository;
 import com.microservices.user.UserService.UserServiceInterface.UserService;
@@ -23,6 +24,8 @@ public class UserServiceLayer implements UserService{
 	UserRepository repository;
 	@Autowired
 	RestTemplate restTemplate;
+	@Autowired
+	HotelService hotelService;
 
 	@Override
 	public UserEntity createUser(UserEntity bean) {
@@ -36,7 +39,8 @@ public class UserServiceLayer implements UserService{
 		UserRatings[] userratings = restTemplate.getForObject("http://RATING-SERVICE/ratingService/microservice/rating/fromuser/"+userid, UserRatings[].class);
 		List<UserRatings> userRatinglist = Arrays.stream(userratings).toList();
 		List<UserRatings> ratingsObject = userRatinglist.stream().map(rating->{
-			UserHotel userHotel = restTemplate.getForObject("http://HOTEL-SERVICE/hotelService/microservice/hotel/"+rating.getHotelId(), UserHotel.class);
+			//UserHotel userHotel = restTemplate.getForObject("http://HOTEL-SERVICE/hotelService/microservice/hotel/"+rating.getHotelId(), UserHotel.class);
+			UserHotel userHotel = hotelService.getUserHotel(rating.getHotelId());
 			rating.setHotel(userHotel);
 			return rating;
 		}).collect(Collectors.toList());
