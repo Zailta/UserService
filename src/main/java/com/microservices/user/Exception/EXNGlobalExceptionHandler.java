@@ -12,7 +12,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.microservices.user.Userutility.UserApiResponse;
-import com.microservices.user.Userutility.UserApiResponse.UserApiResponseBuilder;
 
 @RestControllerAdvice
 public class EXNGlobalExceptionHandler {
@@ -20,7 +19,7 @@ public class EXNGlobalExceptionHandler {
 	@ExceptionHandler(com.microservices.user.Exception.CustomExceptions.EXNResourceNotFoundException.class)
 	public ResponseEntity<UserApiResponse> resourceNotFoundException(EXNResourceNotFoundException ex){
 		String message = ex.getMessage();
-		UserApiResponse response = UserApiResponse.builder().message(message).responseFlag(false).status(HttpStatus.NOT_FOUND).build();
+		UserApiResponse response = new UserApiResponse(message,false, HttpStatus.NOT_FOUND);
 		return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
 	}
 
@@ -38,8 +37,7 @@ public class EXNGlobalExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<UserApiResponse> exception(Exception ex){
 		String message = ex.getMessage();
-		UserApiResponse response = UserApiResponse.builder().message(message).responseFlag(false).status(HttpStatus.NOT_FOUND).build();
-		
+		UserApiResponse response = new UserApiResponse(message,false, HttpStatus.NOT_FOUND);
 		return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
 	}
 	
